@@ -10,7 +10,7 @@ const HeroBanner = () => {
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
       <img
-        src="/hero-bg.webp"
+        src={`${base}hero-bg.webp`}
         alt="KiraKira Slimes Background"
         className="absolute inset-0 h-full w-full object-cover hero-bg-focus"
         draggable={false}
@@ -18,7 +18,7 @@ const HeroBanner = () => {
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center pt-2 sm:pt-1">
         <img
-          src="/kirakira-logo.webp"
+          src={`${base}kirakira-logo.webp`}
           alt="KiraKira Slimes"
           className="hero-logo-float w-[75vw] max-w-[820px] sm:w-[65vw] md:w-[55vw]"
           draggable={false}
