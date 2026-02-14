@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const base = import.meta.env.BASE_URL;
 
   // Subir al inicio (con scroll suave)
   const goTop = () => {
@@ -61,7 +62,7 @@ const Navbar = () => {
           className="flex items-center gap-3 min-w-0 cursor-pointer select-none transition-opacity hover:opacity-90"
         >
           <img
-            src="/logo.webp"
+            src={`${base}logo.webp`}
             alt="EtherDreams"
             className="h-7 sm:h-8 w-auto max-w-[180px] sm:max-w-none"
           />
