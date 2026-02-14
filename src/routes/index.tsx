@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 
 import RootLayout from "../layouts/RootLayout";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -11,7 +11,7 @@ import ContactPage from "../pages/ContactPage";
 import PrivacyPage from "../pages/PrivacyPage";
 import TermsPage from "../pages/TermsPage";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <RootLayout />,
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       { path: "kirakira", element: <KirakiraPage /> },
       { path: "contact", element: <ContactPage /> },
 
-      // ✅ footer links
+      // Footer links
       { path: "privacy", element: <PrivacyPage /> },
       { path: "terms", element: <TermsPage /> },
     ],

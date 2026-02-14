@@ -5,7 +5,6 @@ import { router } from "./routes";
 import "./index.css";
 import "./components/HeroBanner.css";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
