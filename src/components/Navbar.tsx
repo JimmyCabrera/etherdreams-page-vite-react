@@ -5,8 +5,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const base = import.meta.env.BASE_URL;
-
   // Subir al inicio (con scroll suave)
   const goTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,7 +67,6 @@ const Navbar = () => {
           />
         </NavLink>
 
-
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-10">
           <NavLink to="/" className={linkClasses} onClick={handleNavClick}>
@@ -78,18 +75,10 @@ const Navbar = () => {
           <NavLink to="/about" className={linkClasses} onClick={handleNavClick}>
             About
           </NavLink>
-          <NavLink
-            to="/kirakira"
-            className={linkClasses}
-            onClick={handleNavClick}
-          >
+          <NavLink to="/kirakira" className={linkClasses} onClick={handleNavClick}>
             Kirakira
           </NavLink>
-          <NavLink
-            to="/contact"
-            className={linkClasses}
-            onClick={handleNavClick}
-          >
+          <NavLink to="/contact" className={linkClasses} onClick={handleNavClick}>
             Contact
           </NavLink>
         </nav>
@@ -132,11 +121,7 @@ const Navbar = () => {
               <NavLink to="/" onClick={handleNavClick} className={mobileLink}>
                 Home
               </NavLink>
-              <NavLink
-                to="/about"
-                onClick={handleNavClick}
-                className={mobileLink}
-              >
+              <NavLink to="/about" onClick={handleNavClick} className={mobileLink}>
                 About
               </NavLink>
               <NavLink
