@@ -1,0 +1,381 @@
+.kkInfo {
+  position: relative;
+  width: 100%;
+  padding: 6.5rem 0 7.5rem;
+
+  /* CLAVE: para que el zoom “salga” */
+  overflow: visible;
+}
+
+.kkInfo__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Overlay para legibilidad */
+.kkInfo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.26) 45%,
+    rgba(0, 0, 0, 0.46) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.kkInfo__container {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 0 1.5rem;
+
+  /* CLAVE: que también permita “salir” */
+  overflow: visible;
+}
+
+/* ============================= */
+/* TOP */
+/* ============================= */
+.kkInfo__top {
+  display: grid;
+  grid-template-columns: 1.08fr 1.42fr;
+  gap: 3.2rem;
+  align-items: center;
+  margin-bottom: 3.6rem;
+
+  opacity: 0;
+  transform: translateY(18px);
+  animation: kkFadeUp 800ms ease-out 120ms forwards;
+}
+
+.kkInfo__left {
+  max-width: 460px;
+}
+
+.kkInfo__title {
+  margin: 0;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: clamp(2.6rem, 4.4vw, 3.45rem);
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+
+  opacity: 0;
+  transform: translateY(12px);
+  animation: kkFadeUp 700ms ease-out 220ms forwards;
+}
+
+.kkInfo__text {
+  margin: 1.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 380px;
+
+  opacity: 0;
+  transform: translateY(12px);
+  animation: kkFadeUp 700ms ease-out 320ms forwards;
+}
+
+.kkInfo__right {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+  overflow: visible;
+}
+
+/* Conejita */
+.kkInfo__bunny {
+  width: 175px;
+  height: auto;
+  position: absolute;
+  left: -78px;
+  bottom: -18px;
+  z-index: 3;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+  transform: translateX(-10px) translateY(8px);
+  animation: kkFadeIn 700ms ease-out 420ms forwards;
+}
+
+/* Screenshot wrap */
+.kkInfo__screenWrap {
+  width: min(780px, 100%);
+  border-radius: 22px;
+  padding: 6px;
+
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: kkFadeUp 800ms ease-out 420ms forwards;
+
+  /* CLAVE: que el zoom de la imagen no se corte */
+  overflow: visible;
+
+  transition: transform 220ms ease, filter 220ms ease, box-shadow 220ms ease;
+  will-change: transform;
+}
+
+/* Hover del wrapper (sube levemente) */
+.kkInfo__screenWrap:hover {
+  transform: translateY(-10px);
+  filter: drop-shadow(0 28px 80px rgba(0,0,0,0.55));
+}
+
+/* La imagen hace el zoom */
+.kkInfo__screen {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 260ms ease;
+  will-change: transform;
+}
+
+.kkInfo__screenWrap:hover .kkInfo__screen {
+  transform: scale(1.14);
+}
+
+/* ============================= */
+/* CARDS (Group1/2/3) */
+/* ============================= */
+.kkInfo__cards {
+  display: grid;
+  gap: 2.6rem;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  justify-items: center;
+
+  /* CLAVE: para que el zoom no se corte */
+  overflow: visible;
+}
+
+.kkInfo__card {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+
+  filter: drop-shadow(0 18px 50px rgba(0, 0, 0, 0.32));
+
+  /* Entrada */
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  animation: kkCardIn 850ms ease-out forwards;
+
+  /* Hover */
+  transition: transform 240ms ease, filter 240ms ease;
+  will-change: transform;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+/* stagger de entrada */
+.kkInfo__card:nth-child(1) { animation-delay: 520ms; }
+.kkInfo__card:nth-child(2) { animation-delay: 620ms; }
+.kkInfo__card:nth-child(3) { animation-delay: 720ms; }
+
+/* ✅ ZOOM NOTORIO (y se ve porque no hay overflow hidden) */
+.kkInfo__card:hover {
+  transform: translateY(-12px) scale(1.18);
+  filter:
+    drop-shadow(0 38px 115px rgba(0, 0, 0, 0.65))
+    drop-shadow(0 0 32px rgba(167, 139, 250, 0.30));
+}
+
+.kkInfo__card:active {
+  transform: translateY(-6px) scale(1.12);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width: 1024px) {
+  .kkInfo__top {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .kkInfo__left {
+    max-width: 640px;
+  }
+
+  .kkInfo__text {
+    max-width: 560px;
+  }
+
+  .kkInfo__bunny {
+    left: 8px;
+    bottom: -26px;
+    width: 155px;
+  }
+
+  .kkInfo__cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .kkInfo__card {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 520px) {
+  .kkInfo {
+    padding: 5.2rem 0 6.2rem;
+  }
+
+  .kkInfo__bunny {
+    width: 135px;
+    left: 6px;
+  }
+
+  .kkInfo__screenWrap {
+    border-radius: 18px;
+    padding: 5px;
+  }
+
+  .kkInfo__screen {
+    border-radius: 14px;
+  }
+}
+
+/* ============================= */
+/* ANIMACIONES */
+/* ============================= */
+@keyframes kkFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kkFadeIn {
+  from { opacity: 0; transform: translateX(-10px) translateY(8px); }
+  to   { opacity: 1; transform: translateX(0) translateY(0); }
+}
+
+@keyframes kkCardIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============================= */
+/* ACCESIBILIDAD */
+/* ============================= */
+@media (prefers-reduced-motion: reduce) {
+  .kkInfo__top,
+  .kkInfo__title,
+  .kkInfo__text,
+  .kkInfo__bunny,
+  .kkInfo__screenWrap,
+  .kkInfo__card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .kkInfo__card,
+  .kkInfo__screen,
+  .kkInfo__screenWrap {
+    transition: none !important;
+  }
+}
+
+/* ============================= */
+/* CARDS (Group1/2/3) */
+/* ============================= */
+
+.kkInfo__cards {
+  display: grid;
+  gap: 2.6rem;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  justify-items: center;
+
+  overflow: visible;
+}
+
+/* Wrapper invisible SOLO para animación */
+.kkInfo__cardWrap {
+  width: 100%;
+  max-width: 420px;
+
+  background: transparent;   /* ❌ sin glass */
+  padding: 0;                /* ❌ sin borde */
+  border-radius: 0;          /* ❌ sin redondeo */
+  box-shadow: none;          /* ❌ sin sombra base */
+
+  overflow: visible;
+  will-change: transform;
+
+  transition:
+    transform 250ms ease,
+    filter 250ms ease;
+}
+
+/* Imagen real (la tarjeta original) */
+.kkInfo__cardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  transform: scale(1);
+  transition: transform 300ms ease;
+  will-change: transform;
+}
+
+/* Hover PRO limpio */
+.kkInfo__cardWrap:hover {
+  transform: translateY(-12px);
+  filter: drop-shadow(0 35px 90px rgba(0,0,0,0.6));
+}
+
+.kkInfo__cardWrap:hover .kkInfo__cardImg {
+  transform: scale(1.15);
+}
+
+/* Click */
+.kkInfo__cardWrap:active .kkInfo__cardImg {
+  transform: scale(1.08);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .kkInfo__cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .kkInfo__cardWrap {
+    max-width: 520px;
+  }
+}

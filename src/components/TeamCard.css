@@ -1,0 +1,126 @@
+.teamCard {
+  position: relative;
+  width: 100%;
+  min-height: 300px; /* 🔥 más alto */
+  display: grid;
+  place-items: end center;
+  padding-bottom: 10px;
+
+  transition: transform 200ms ease, filter 200ms ease;
+  will-change: transform;
+}
+
+.teamCard:hover {
+  transform: translateY(-10px) scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* 🔥 Slime MUCHO más grande */
+.teamCard__avatar {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;   /* 🔥 GRANDE */
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+
+  filter: drop-shadow(0 25px 70px rgba(0, 0, 0, 0.6));
+  transition: transform 200ms ease, filter 200ms ease;
+}
+
+.teamCard:hover .teamCard__avatar {
+  transform: translateX(-50%) translateY(-6px) scale(1.05);
+  filter: drop-shadow(0 35px 90px rgba(0, 0, 0, 0.75));
+}
+
+/* 🔥 Tarjeta más grande */
+.teamCard__plate {
+  width: 100%;
+  border-radius: 22px;
+
+  padding: 80px 24px 26px; /* 🔥 más espacio para slime */
+  text-align: center;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow superior sutil */
+.teamCard__plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 15%,
+    rgba(255, 255, 255, 0.22),
+    transparent 60%
+  );
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* 🔥 Nombre más grande */
+.teamCard__name {
+  margin: 0;
+  font-weight: 800;
+  font-size: 18px; /* 🔥 más grande */
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* 🔥 Rol más grande */
+.teamCard__role {
+  margin: 12px auto 0;
+  max-width: 260px;
+
+  font-size: 13px;  /* 🔥 más grande */
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Colores */
+.teamCard--blue .teamCard__plate {
+  background: linear-gradient(180deg, #5ea2e0, #3b6faf);
+}
+.teamCard--green .teamCard__plate {
+  background: linear-gradient(180deg, #7fd2a6, #4ca577);
+}
+.teamCard--purple .teamCard__plate {
+  background: linear-gradient(180deg, #9b83ff, #5f47d9);
+}
+.teamCard--yellow .teamCard__plate {
+  background: linear-gradient(180deg, #ffd882, #d9a14b);
+}
+.teamCard--dark .teamCard__plate {
+  background: linear-gradient(180deg, #5a5a6d, #2f2f40);
+}
+.teamCard--magenta .teamCard__plate {
+  background: linear-gradient(180deg, #c071ff, #8b3ed6);
+}
+.teamCard--red .teamCard__plate {
+  background: linear-gradient(180deg, #c45c5c, #7e2f2f);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .teamCard__avatar {
+    width: 170px;
+  }
+
+  .teamCard {
+    min-height: 270px;
+  }
+}
