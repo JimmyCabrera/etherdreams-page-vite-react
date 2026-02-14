@@ -5,20 +5,20 @@ const AboutHero = () => {
     <section className="aboutHero">
       {/* Fondo */}
       <img
-        src="/FondoNosotros.webp"
+        src={`${import.meta.env.BASE_URL}FondoNosotros.webp`}
         alt="About background"
         className="aboutHero__bg"
         draggable={false}
       />
 
-      {/* Capa oscura suave (para contraste del texto) */}
+      {/* Capa oscura suave */}
       <div className="aboutHero__overlay" />
 
       {/* Contenido */}
       <div className="aboutHero__content">
         {/* Logo watermark detrás del texto */}
         <img
-          src="/logoVectorED.webp"
+          src={`${import.meta.env.BASE_URL}logoVectorED.webp`}
           alt=""
           className="aboutHero__watermark"
           draggable={false}

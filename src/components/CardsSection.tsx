@@ -32,6 +32,9 @@ const cardRight: Variants = {
 };
 
 const CardsSection = () => {
+  const tigreSrc = `${import.meta.env.BASE_URL}Tigre.webp`;
+  const loboSrc = `${import.meta.env.BASE_URL}Lobo.webp`;
+
   return (
     <section className="cardsSection">
       <div className="cardsContainer">
@@ -44,7 +47,7 @@ const CardsSection = () => {
         >
           {/* CARD 1 */}
           <motion.article className="cardWrap" variants={cardLeft}>
-            <img className="cardSticker" src="/Tigre.webp" alt="Tigre" />
+            <img className="cardSticker" src={tigreSrc} alt="Tigre" />
 
             <div className="cardBorder">
               <div className="cardBody">
@@ -52,8 +55,8 @@ const CardsSection = () => {
                 <h3 className="cardTitle">FOLLOW US</h3>
 
                 <p className="cardText">
-                  Join us on our social media to keep up with the latest updates and
-                  news.
+                  Join us on our social media to keep up with the latest updates
+                  and news.
                 </p>
 
                 <div className="cardIcons">
@@ -107,7 +110,7 @@ const CardsSection = () => {
 
           {/* CARD 2 */}
           <motion.article className="cardWrap" variants={cardRight}>
-            <img className="cardSticker" src="/Lobo.webp" alt="Lobo" />
+            <img className="cardSticker" src={loboSrc} alt="Lobo" />
 
             <div className="cardBorder">
               <div className="cardBody">

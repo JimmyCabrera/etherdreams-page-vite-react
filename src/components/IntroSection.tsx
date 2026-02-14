@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -52,12 +53,18 @@ const fadeUp: Variants = {
   },
 };
 
-const IntroSection: React.FC<IntroSectionProps> = ({
-  logoSrc = "/logoVectorED.webp",
-}) => {
+const IntroSection: React.FC<IntroSectionProps> = ({ logoSrc }) => {
+  const baseUrl = import.meta.env.BASE_URL;
+
+  const resolvedLogoSrc = logoSrc
+    ? logoSrc.startsWith("http")
+      ? logoSrc
+      : `${baseUrl}${logoSrc.replace(/^\/+/, "")}`
+    : `${baseUrl}logoVectorED.webp`;
+
   return (
     <section className="w-full bg-black">
-      {/* 🔥 mismo ancho que el navbar */}
+      {/* mismo ancho que el navbar */}
       <div className="mx-auto max-w-6xl px-6 py-28">
         <motion.div
           variants={container}
@@ -72,7 +79,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
             className="flex justify-center md:justify-start md:-mt-6"
           >
             <img
-              src={logoSrc}
+              src={resolvedLogoSrc}
               alt="Ether Dreams logo"
               className="
                 w-[240px]
@@ -82,6 +89,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
                 max-w-full
                 drop-shadow-[0_28px_90px_rgba(0,0,0,0.65)]
               "
+              draggable={false}
             />
           </motion.div>
 
@@ -122,10 +130,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
               Our dreams are beyond this planet.
             </motion.p>
 
-            <motion.div
-              variants={upItem}
-              className="mt-10 flex justify-end"
-            >
+            <motion.div variants={upItem} className="mt-10 flex justify-end">
               <Link
                 to="/about"
                 className="

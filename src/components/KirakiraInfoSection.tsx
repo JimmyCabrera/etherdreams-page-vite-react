@@ -1,11 +1,13 @@
 import "./KirakiraInfoSection.css";
 
 const KirakiraInfoSection = () => {
+  const base = import.meta.env.BASE_URL;
+
   return (
     <section className="kkInfo">
       {/* Fondo */}
       <img
-        src="/fondo2.webp"
+        src={`${base}fondo2.webp`}
         alt=""
         className="kkInfo__bg"
         draggable={false}
@@ -28,7 +30,7 @@ const KirakiraInfoSection = () => {
           {/* Imagen grande + conejo */}
           <div className="kkInfo__right">
             <img
-              src="/conejoSlime.webp"
+              src={`${base}conejoSlime.webp`}
               alt=""
               className="kkInfo__bunny"
               draggable={false}
@@ -36,7 +38,7 @@ const KirakiraInfoSection = () => {
 
             <div className="kkInfo__screenWrap">
               <img
-                src="/screenshot_kirakira.webp"
+                src={`${base}screenshot_kirakira.webp`}
                 alt="Kirakira Slimes screenshot"
                 className="kkInfo__screen"
                 draggable={false}
@@ -45,36 +47,35 @@ const KirakiraInfoSection = () => {
           </div>
         </div>
 
-        {/* Bottom: 3 tarjetas como imágenes (YA SON TARJETAS) */}
+        {/* Bottom: 3 tarjetas como imágenes */}
         <div className="kkInfo__cards">
-  <div className="kkInfo__cardWrap">
-    <img
-      src="/Group1.webp"
-      alt="Kirakira feature 1"
-      className="kkInfo__cardImg"
-      draggable={false}
-    />
-  </div>
+          <div className="kkInfo__cardWrap">
+            <img
+              src={`${base}Group1.webp`}
+              alt="Kirakira feature 1"
+              className="kkInfo__cardImg"
+              draggable={false}
+            />
+          </div>
 
-  <div className="kkInfo__cardWrap">
-    <img
-      src="/Group2.webp"
-      alt="Kirakira feature 2"
-      className="kkInfo__cardImg"
-      draggable={false}
-    />
-  </div>
+          <div className="kkInfo__cardWrap">
+            <img
+              src={`${base}Group2.webp`}
+              alt="Kirakira feature 2"
+              className="kkInfo__cardImg"
+              draggable={false}
+            />
+          </div>
 
-  <div className="kkInfo__cardWrap">
-    <img
-      src="/Group3.webp"
-      alt="Kirakira feature 3"
-      className="kkInfo__cardImg"
-      draggable={false}
-    />
-  </div>
-</div>
-
+          <div className="kkInfo__cardWrap">
+            <img
+              src={`${base}Group3.webp`}
+              alt="Kirakira feature 3"
+              className="kkInfo__cardImg"
+              draggable={false}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

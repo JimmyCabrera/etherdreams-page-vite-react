@@ -3,9 +3,9 @@ import "./Footer.css";
 
 const Footer = () => {
   const { pathname } = useLocation();
+  const base = import.meta.env.BASE_URL;
 
   const scrollToTop = () => {
-    // más suave y consistente
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
@@ -15,14 +15,16 @@ const Footer = () => {
         {/* Brand */}
         <div className="edFooter__brand">
           <img
-            src="/logoVectorED.webp"
+            src={`${base}logoVectorED.webp`}
             alt="Ether Dreams"
             className="edFooter__logo"
             draggable={false}
           />
           <div className="edFooter__brandText">
             <p className="edFooter__brandName">Ether Dreams</p>
-            <p className="edFooter__brandTag">Indie studio • Worlds & experiences</p>
+            <p className="edFooter__brandTag">
+              Indie studio • Worlds & experiences
+            </p>
           </div>
         </div>
 

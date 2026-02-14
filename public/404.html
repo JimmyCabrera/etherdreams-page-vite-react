@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // Redirect all 404s to index.html for React Router
+      const path = window.location.pathname;
+      const base = "/etherdreams-page-vite-react";
+      window.location.replace(base + "/#"+ path.replace(base, ""));
+    </script>
+  </head>
+  <body></body>
+</html>

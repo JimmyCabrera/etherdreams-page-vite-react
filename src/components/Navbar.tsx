@@ -5,6 +5,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const base = import.meta.env.BASE_URL;
+
   // Subir al inicio (con scroll suave)
   const goTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -34,9 +36,7 @@ const Navbar = () => {
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
     [
-      // tamaño + negrita
       "text-lg font-bold tracking-wide",
-      // contraste siempre legible
       "drop-shadow-[0_2px_4px_rgba(0,0,0,0.65)]",
       "transition-all duration-200",
       isActive ? "text-white" : "text-white/90 hover:text-white",
@@ -51,8 +51,7 @@ const Navbar = () => {
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         scrolled
           ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
-          : // Más oscuro en mobile para que NO se pierda con fondos claros
-            "bg-black/60 md:bg-black/50 backdrop-blur-lg",
+          : "bg-black/60 md:bg-black/50 backdrop-blur-lg",
       ].join(" ")}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -63,7 +62,12 @@ const Navbar = () => {
           aria-label="Ir al inicio"
           className="flex items-center gap-3 cursor-pointer select-none transition-opacity hover:opacity-90"
         >
-          <img src="/logo.webp" alt="EtherDreams" className="h-8 w-auto" />
+          <img
+            src={`${base}logo.webp`}
+            alt="EtherDreams"
+            className="h-8 w-auto"
+            draggable={false}
+          />
         </NavLink>
 
         {/* Desktop Menu */}

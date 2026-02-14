@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 type Variant = "dark" | "gradient";
 
@@ -8,11 +9,9 @@ type Props = {
   variant?: Variant;
   className?: string;
 
-  // icono desde /public
   iconSrc?: string;
   iconAlt?: string;
 
-  // 👇 NUEVO: soporte para abrir en otra pestaña
   target?: "_self" | "_blank" | "_parent" | "_top";
   rel?: string;
 };
@@ -31,13 +30,8 @@ export default function HeroButton({
   const variantClass =
     variant === "gradient" ? "hero-btn-gradient" : "hero-btn-dark";
 
-  return (
-    <a
-      href={href}
-      target={target}
-      rel={rel}
-      className={`${base} ${variantClass} ${className}`}
-    >
+  const content = (
+    <>
       {iconSrc ? (
         <span className="hero-btn-icon" aria-hidden="true">
           <img
@@ -50,8 +44,25 @@ export default function HeroButton({
       ) : null}
 
       <span className="hero-btn-text">{children}</span>
-
       <span className="hero-btn-shine" aria-hidden="true" />
+    </>
+  );
+
+  const classes = `${base} ${variantClass} ${className}`;
+
+  // ✅ Si es ruta interna, usamos Link (respeta HashRouter)
+  if (href.startsWith("/")) {
+    return (
+      <Link to={href} className={classes}>
+        {content}
+      </Link>
+    );
+  }
+
+  // ✅ Si es externa, usamos <a>
+  return (
+    <a href={href} target={target} rel={rel} className={classes}>
+      {content}
     </a>
   );
 }

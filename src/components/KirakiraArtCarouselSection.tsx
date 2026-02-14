@@ -7,13 +7,15 @@ type Slide = {
 };
 
 const KirakiraArtCarouselSection = () => {
+  const base = import.meta.env.BASE_URL;
+
   const slides: Slide[] = useMemo(
     () => [
-      { src: "/fondo1.webp", alt: "Arte Kirakira Slimes 1" },
-      { src: "/fondo2.webp", alt: "Arte Kirakira Slimes 2" },
-      { src: "/fondo3.webp", alt: "Arte Kirakira Slimes 3" },
+      { src: `${base}fondo1.webp`, alt: "Arte Kirakira Slimes 1" },
+      { src: `${base}fondo2.webp`, alt: "Arte Kirakira Slimes 2" },
+      { src: `${base}fondo3.webp`, alt: "Arte Kirakira Slimes 3" },
     ],
-    []
+    [base]
   );
 
   const [index, setIndex] = useState(0);
@@ -42,6 +44,7 @@ const KirakiraArtCarouselSection = () => {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
   return (
@@ -68,7 +71,9 @@ const KirakiraArtCarouselSection = () => {
                   key={s.src}
                   className="kkCarousel__slide"
                   style={{
-                    transform: `translateX(${offset * 64}%) scale(${i === index ? 1 : 0.82})`,
+                    transform: `translateX(${offset * 64}%) scale(${
+                      i === index ? 1 : 0.82
+                    })`,
                     opacity: i === index ? 1 : 0.35,
                     zIndex: i === index ? 3 : 1,
                   }}
