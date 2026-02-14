@@ -54,21 +54,21 @@ const Navbar = () => {
           : "bg-black/60 md:bg-black/50 backdrop-blur-lg",
       ].join(" ")}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 overflow-x-hidden">
         {/* LOGO (click -> inicio + scroll top) */}
         <NavLink
           to="/"
           onClick={handleNavClick}
           aria-label="Ir al inicio"
-          className="flex items-center gap-3 cursor-pointer select-none transition-opacity hover:opacity-90"
+          className="flex items-center gap-3 min-w-0 cursor-pointer select-none transition-opacity hover:opacity-90"
         >
           <img
-            src={`${base}logo.webp`}
+            src="/logo.webp"
             alt="EtherDreams"
-            className="h-8 w-auto"
-            draggable={false}
+            className="h-7 sm:h-8 w-auto max-w-[180px] sm:max-w-none"
           />
         </NavLink>
+
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-10">

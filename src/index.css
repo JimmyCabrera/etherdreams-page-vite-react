@@ -10,3 +10,7 @@
 .animate-floaty {
   animation: floaty 4.5s ease-in-out infinite;
 }
+
+html, body {
+  overflow-x: hidden;
+}
